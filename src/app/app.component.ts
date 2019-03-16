@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { Navigate, SetUsername } from './shared';
+import { ConfirmOrder, Navigate, SetUsername } from './shared';
 
 @Component({
   selector: 'app-root',
@@ -19,5 +19,9 @@ export class AppComponent {
       new SetUsername(username),
       new Navigate('salad/order')
     ]);
+  }
+
+  confirm() {
+    this.store.dispatch(ConfirmOrder);
   }
 }
