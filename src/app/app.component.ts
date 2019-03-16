@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { Navigate, SetUsername } from './shared';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ngxs-demo';
+  @Select() app$; // selector, automatically selects slice of the store with the name 'app'
+  // @Select( state => state.app) app$; // if the above is too magical you can pass a fuction and select the slice
+
+  constructor(private store: Store) {}
+
+/* This is how to dispatch actions */
+  clickHandler(username) {
+    this.store.dispatch([
+      new SetUsername(username),
+      new Navigate('salad/order')
+    ]);
+  }
 }
