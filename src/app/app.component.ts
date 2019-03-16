@@ -26,6 +26,6 @@ export class AppComponent {
   }
 
   confirm() {
-    this.store.dispatch(ConfirmOrder);
+    this.store.dispatch(new ConfirmOrder);
   }
 }
