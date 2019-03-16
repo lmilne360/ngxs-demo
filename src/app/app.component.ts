@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { AppState, ConfirmOrder, Navigate, SetUsername } from './shared';
+import { AppStateModel, ConfirmOrder, Navigate, SetUsername } from './shared';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,13 @@ import { AppState, ConfirmOrder, Navigate, SetUsername } from './shared';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @Select() app$: Observable<AppState>; // selector, automatically selects slice of the store with the name 'app'
+  @Select() app$: Observable<AppStateModel>; // selector, automatically selects slice of the store with the name 'app'
   // @Select( state => state.app) app$; // if the above is too magical you can pass a fuction and select the slice
 
-  constructor(private store: Store) {}
+  // state$: Observable<AppState>;
+  constructor(private store: Store) {
+    // this.state$ = this.store.select(state => state);
+  }
 
 /* This is how to dispatch actions */
   clickHandler(username) {
