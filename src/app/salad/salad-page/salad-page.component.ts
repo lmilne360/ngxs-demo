@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { SaladState } from '../state/salad.state';
+import { SaladState, SaladStateModel } from '../state/salad.state';
 
 @Component({
   selector: 'app-salad-page',
@@ -11,8 +11,15 @@ import { SaladState } from '../state/salad.state';
 export class SaladPageComponent implements OnInit {
 
   @Select(SaladState.getDressing) dressing$: Observable<string>;
+  @Select() salad$: Observable<SaladStateModel>;
+  @Select(state => state.salad.price) price$: Observable<number>;
 
+  constructor(private store: Store) {}
   ngOnInit() {
+  }
+
+  startOver() {
+    alert('Start over');
   }
 
 }
