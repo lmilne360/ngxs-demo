@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { SaladState } from '../state/salad.state';
 
 @Component({
   selector: 'app-salad-page',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaladPageComponent implements OnInit {
 
-  constructor() { }
+  @Select(SaladState.getDressing) dressing$: Observable<string>;
 
   ngOnInit() {
   }
