@@ -20,7 +20,7 @@ export class SaladPageComponent implements OnInit {
   }
 
   startOver() {
-    this.store.dispatch(StartOver);
+    this.store.dispatch(new StartOver);
   }
 
 }
