@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { StartOver } from '../state/salad.actions';
 import { SaladState, SaladStateModel } from '../state/salad.state';
 
 @Component({
@@ -19,7 +20,7 @@ export class SaladPageComponent implements OnInit {
   }
 
   startOver() {
-    alert('Start over');
+    this.store.dispatch(StartOver);
   }
 
 }

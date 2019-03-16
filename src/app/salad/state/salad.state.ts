@@ -1,4 +1,5 @@
-import { Selector, State } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { AddTopping, StartOver } from './salad.actions';
 
 export interface SaladStateModel {
   dressing: string;
@@ -13,8 +14,6 @@ const defaults: SaladStateModel = {
 
 };
 
-
-
 @State<SaladStateModel>({
   name: 'salad',
   defaults
@@ -25,5 +24,20 @@ export class SaladState {
   @Selector()
   static getDressing(state: SaladStateModel) {
     return state.dressing.toLocaleUpperCase();
+  }
+
+  /* This is how you create an action reducer */
+  @Action(AddTopping)
+  addTopping(context: StateContext<SaladStateModel>, {payload}: AddTopping) {
+    const currentState = context.getState();
+
+    const toppings = [...currentState.toppings, payload];
+
+    context.patchState({toppings, price: currentState.price + 0.5});
+  }
+
+  @Action(StartOver)
+  reset({setState}: StateContext<SaladStateModel>) {
+    setState({...defaults});
   }
 }
