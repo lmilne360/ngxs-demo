@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterState, AppState } from './shared';
 import { NgxsRootModule } from '@ngxs/store/src/module';
+import { SaladModule } from './salad/salad.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { NgxsRootModule } from '@ngxs/store/src/module';
       AppState,
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot()
+    NgxsLoggerPluginModule.forRoot(),
+    SaladModule
   ],
   providers: [],
   bootstrap: [AppComponent]
