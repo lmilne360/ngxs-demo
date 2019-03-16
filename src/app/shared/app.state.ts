@@ -1,1 +1,1 @@
-export const AppState = {};
+export class AppState {}
