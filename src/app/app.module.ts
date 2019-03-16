@@ -7,7 +7,6 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SaladModule } from './salad/salad.module';
 import { OrderService } from './services/order.service';
 import { AppState, RouterState } from './shared';
 
@@ -27,7 +26,6 @@ import { AppState, RouterState } from './shared';
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
-    SaladModule
   ],
   providers: [OrderService],
   bootstrap: [AppComponent]
